@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: nexora-demo
+    runtime: python
+    plan: free
+    buildCommand: "python -m py_compile server.py"
+    startCommand: "python server.py"
+    envVars:
+      - key: NEXORA_ADMIN_PIN
+        generateValue: true

@@ -1,0 +1,29 @@
+NEXORA 6.0 — PUBLIC DEMO DEPLOY
+================================
+
+This package is prepared for a Render Web Service demo.
+
+IMPORTANT LIMITS
+- Render Free web services sleep after 15 minutes without traffic and may take about a minute to wake.
+- Their local filesystem is temporary. The SQLite database and orders can disappear on restart, sleep, or redeploy.
+- Do NOT collect real customer names, phone numbers, addresses, or payments on this free demo.
+- Render's free Postgres database currently expires after 30 days, so it is not a permanent free production database.
+- This is a public demo, not a production-ready shop. No payment gateway, shipping, tax, backups, or production-grade security.
+- An adult/parent or guardian should manage hosting accounts and any real business/payment setup.
+
+STEPS
+1. A parent/guardian creates or manages the GitHub and Render accounts.
+2. Create a new GitHub repository named nexora-demo.
+3. Upload all files from this folder to that repository. Include render.yaml, server.py, index.html, style.css, app.js.
+4. In Render, choose New -> Blueprint and connect the repository (or choose New -> Web Service).
+5. If using Web Service manually:
+   - Runtime: Python
+   - Build command: python -m py_compile server.py
+   - Start command: python server.py
+   - Instance type: Free
+   - Environment variable NEXORA_ADMIN_PIN: set a strong private PIN in Render Environment.
+6. Deploy. Render will provide a public https://...onrender.com address.
+7. Keep the admin PIN private. Never paste it into public chats or commit it to GitHub.
+
+The included render.yaml asks Render to generate a secret NEXORA_ADMIN_PIN automatically.
+For real customer orders, first replace SQLite with a durable database and add production security.
